@@ -18,22 +18,36 @@ namespace ShareCar_v2
         //Point lastPoint;
         LoginRepo loginRepo = new LoginRepo();
         UserRepo userRepo = new UserRepo();
+        ExeRepo exeRepo = new ExeRepo();
         
+        CurrentUserRepo cUser = new CurrentUserRepo();
+        public static string username;
+        
+        string a = "admin";
+        string z = "user";
+        string y = "exe";
+
         public Login()
         {
             InitializeComponent();
         }
+     
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            AdminLogin aLogin = new AdminLogin();
-            aLogin.username = tbUser.Text;
-            aLogin.password = tbPassword.Text;
-            
-            User ulogin = new User();
-            ulogin.username = tbUser.Text;
-            ulogin.password = tbPassword.Text;
-            
+            loginEnt login = new loginEnt();
+            login.username = tbUser.Text;
+            login.password = tbPassword.Text;
+            login.userTypeAdmin = a;
+            login.userTypeUser = z;
+            login.userTypeExe = y;
+
+
+            CurrentUserValue currentUser = new CurrentUserValue();
+            currentUser.currentUser = tbUser.Text;
+
+            username = tbUser.Text;
+
 
             if (tbUser.Text == "")
             {
@@ -45,11 +59,13 @@ namespace ShareCar_v2
             }
             else
             {
-                bool b = loginRepo.LoginAdmin(aLogin);
-                bool c = userRepo.UserLogin(ulogin);
+                bool b = loginRepo.LoginAdmin(login);
+                bool c = userRepo.UserLogin(login);
+                bool f = exeRepo.ExLogin(login);
+                bool d = cUser.CurrentUserStore(currentUser);
 
 
-                if (b == true)
+                if (c == true && d == true)
                 {
                     MessageBox.Show("Login Successful admin");
                     this.Hide();
@@ -57,12 +73,19 @@ namespace ShareCar_v2
                     management.Show();
                     this.Hide();
                 }
-                else if (c == true)
+                else if (b == true && d == true)
                 {
                     MessageBox.Show("Login Successful User");
                     this.Hide();
                     UserDash dashboard = new UserDash();
                     dashboard.Show();
+                }
+                else if (f == true && d == true)
+                {
+                    MessageBox.Show("Login Successful Exe");
+                    this.Hide();
+                    ExeDash exedashboard = new ExeDash();
+                    exedashboard.Show();
                 }
                 else
                     MessageBox.Show("Login Failed!", "Login Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);

@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace ShareCar.Entity
 {
-    public class User
+    public class loginEnt
     {
         public int id { get; set; }
         public string username { get; set; }
         public string password { get; set; }
-        public string area { get; set; }
-        public string dpt { get; set; }
+        public string userTypeAdmin { get; set; }
+        public string userTypeUser { get; set; }
+        public string userTypeExe { get; set; }
+
     }
 }

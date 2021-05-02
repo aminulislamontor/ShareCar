@@ -16,7 +16,7 @@ namespace ShareCar_v2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UserDash());
+            Application.Run(new Login());
         }
     }
 }

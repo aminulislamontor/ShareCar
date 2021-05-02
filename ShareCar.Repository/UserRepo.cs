@@ -11,12 +11,12 @@ namespace ShareCar.Repository
 {
     public class UserRepo
     {
-        
-        public Boolean UserLogin(User user)
+
+        public Boolean UserLogin(loginEnt user)
         {
             try
             {
-                string query = "select * from user where username = '" + user.username + "' and password = '" + user.password + "';";
+                string query = "select * from loginCredit where username = '" + user.username + "' and password = '" + user.password + "' and userType = '" + user.userTypeUser + "';";
                 var dt = DataAccess.GetDataTable(query);
 
                 if (dt.DataSet.Tables[0].Rows.Count == 1)

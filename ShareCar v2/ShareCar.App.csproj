@@ -55,11 +55,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddCarRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddCarRequest.Designer.cs">
+      <DependentUpon>AddCarRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="DashboardAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DashboardAdmin.Designer.cs">
       <DependentUpon>DashboardAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExeDash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExeDash.Designer.cs">
+      <DependentUpon>ExeDash.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -75,6 +87,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddCarRequest.resx">
+      <DependentUpon>AddCarRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExeDash.resx">
+      <DependentUpon>ExeDash.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>

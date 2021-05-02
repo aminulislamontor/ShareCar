@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarRequestRepo.cs" />
+    <Compile Include="CurrentUserRepo.cs" />
+    <Compile Include="ExeRepo.cs" />
     <Compile Include="LoginRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserRepo.cs" />

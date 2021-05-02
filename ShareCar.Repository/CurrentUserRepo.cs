@@ -3,33 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
 using ShareCar.Entity;
 using ShareCar.Data;
+using System.Data;
 
 namespace ShareCar.Repository
 {
-    public class LoginRepo
+    public class CurrentUserRepo
     {
-        public Boolean LoginAdmin(loginEnt adminLogin)
+        public bool CurrentUserStore(CurrentUserValue currentUser)
         {
-
             try
             {
+                string query = "insert into currentUser values(' " + currentUser.currentUser + " ')";
+                int count = DataAccess.ExecuteUpdateQuery(query);
 
-                string query = "select * from loginCredit where username = '" + adminLogin.username + "' and password = '" + adminLogin.password + "' and userType = '"+ adminLogin.userTypeAdmin +"';";
-                var dt = DataAccess.GetDataTable(query);
-
-                if (dt.DataSet.Tables[0].Rows.Count == 1)
+                if (count >= 1)
                 {
                     return true;
                 }
                 else
+                {
                     return false;
-
+                }
             }
             catch (Exception exception)
             {
+                //MessageBox.Show(Console.WriteLine(exception));
                 return false;
             }
         }
